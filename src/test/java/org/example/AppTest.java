@@ -1,38 +1,43 @@
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class AppTest {
+    WebDriver driver;
+
+    @Test
+    public void loginverification() throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.get("https://pastebin.com/");
+        driver.manage().window().maximize();
+
+        App page = new App(driver);
+        page.NewPaste();
+        Thread.sleep(2000);
+        JavascriptExecutor js2 = (JavascriptExecutor) driver;
+        js2.executeScript("window.scrollBy(0,700)", "");
+        Thread.sleep(2000);
+        page.paste_Expiration();
+        Thread.sleep(2000);
+
+        page.expireTime();
+        Thread.sleep(2000);
+
+        page.pasteName();
+        Thread.sleep(2000);
+
+        page.Submit();
+        Thread.sleep(2000);
+
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+
+
 }
