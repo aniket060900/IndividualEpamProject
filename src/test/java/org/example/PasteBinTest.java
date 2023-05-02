@@ -1,43 +1,27 @@
 package org.example;
-
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.Browser.FactoryBrowser;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
-
-public class AppTest {
+public class PasteBinTest {
     WebDriver driver;
-
     @Test
-    public void loginverification() throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get("https://pastebin.com/");
-        driver.manage().window().maximize();
-
-        App page = new App(driver);
+    public void PasteBinVerification() throws InterruptedException {
+        driver = FactoryBrowser.setupBrowser("chrome","https://pastebin.com/");
+        PasteBin page= PageFactory.initElements(driver , PasteBin.class);
         page.NewPaste();
         Thread.sleep(2000);
         JavascriptExecutor js2 = (JavascriptExecutor) driver;
         js2.executeScript("window.scrollBy(0,700)", "");
         Thread.sleep(2000);
-        page.paste_Expiration();
+        page.pasteExpiration();
         Thread.sleep(2000);
-
         page.expireTime();
         Thread.sleep(2000);
-
         page.pasteName();
         Thread.sleep(2000);
-
         page.Submit();
         Thread.sleep(2000);
-
     }
-
-
-
-
 }
