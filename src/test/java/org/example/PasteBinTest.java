@@ -23,5 +23,8 @@ public class PasteBinTest {
         Thread.sleep(2000);
         page.Submit();
         Thread.sleep(2000);
+        driver.quit();
+        Thread.sleep(2000);
+
     }
 }
