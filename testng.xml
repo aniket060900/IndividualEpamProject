@@ -2,11 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true"
-          name="C:/Users/hp/Desktop/EpamProject/src/test/java/org/example/AppTest.java">
+          name="C:/Users/hp/Desktop/EpamProject/src/test/java/org/example/GoogleCloudTest.java">
         <classes>
-            <class name="org.example.PasteBinTest">
+            <class name="org.example.GoogleCloudTest">
                 <methods>
-                    <include name="loginverification"/>
+                    <include name="GoogleCloud"/>
                 </methods>
             </class>
         </classes>
